@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" width="100%" alt="Kaggle Time-Saver Agent Banner">
+</p>
+
 # Kaggle Time-Saver Agent
 
 Kaggle Time-Saver Agent is an AI-powered dataset assistant designed to automate data analysis, visualization, reporting, and Kaggle dataset downloads. It combines Google Gemini function-calling with a modular Python backend and an interactive Streamlit dashboard.
