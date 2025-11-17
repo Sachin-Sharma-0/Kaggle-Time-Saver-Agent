@@ -1,61 +1,59 @@
 # Kaggle Time-Saver Agent
 
-An AI-powered agent that helps you analyze Kaggle datasets quickly using Google Gemini AI with function calling capabilities.
+Kaggle Time-Saver Agent is an AI-powered dataset assistant designed to automate data analysis, visualization, reporting, and Kaggle dataset downloads. It combines Google Gemini function-calling with a modular Python backend and an interactive Streamlit dashboard.
 
-## Features
+---
 
-- 🤖 **AI-Powered Analysis**: Ask natural language questions about your dataset
-- 📊 **Data Exploration**: List columns, describe statistics, find missing values
-- 📈 **Visualizations**: Generate histograms, bar charts, and correlation heatmaps
-- 🧠 **Machine Learning**: Train models (Logistic Regression, Random Forest) and make predictions
-- 🗄️ **SQL Queries**: Run SQL queries on your dataset
-- 📄 **Report Generation**: Create HTML/PDF reports with statistics and charts
-- 📁 **Multi-Dataset Support**: Load and switch between multiple datasets
-- 🔽 **Kaggle Integration**: Download datasets directly from Kaggle
+## Live Demo
 
-## Project Structure
+- Streamlit App: https://kaggle-time-saver-agent-e4dytd65tutyyw9cm5knfu.streamlit.app/
+- Google Colab Notebook (full development workflow): https://colab.research.google.com/drive/133RXsuoKAmaIEOrjS6YL_AMoNbvGNvwV?usp=sharing
 
-```
-Kaggle_Time_Saver_Agent/
-├── app.py                      # Main application entry point
-├── modules/
-│   ├── __init__.py
-│   ├── config.py              # Configuration and environment setup (Block 1)
-│   ├── kaggle_utils.py        # Kaggle API helpers (Block 2)
-│   ├── dataset_loader.py      # Dataset download/loading (Blocks 3, 4, 10.5)
-│   └── agent.py               # Core AI agent with all tools (Blocks 5-10)
-├── data/                      # Dataset storage directory
-├── reports/                   # Generated reports directory
-├── requirements.txt           # Python dependencies
-├── .env.example              # Environment variables template
-└── README.md                 # This file
-```
+---
+
+## Overview
+
+This system acts as an AI assistant for dataset understanding. It supports:
+
+- Natural-language dataset exploration
+- Loading and switching between multiple datasets
+- Automatic EDA, summary statistics, and missing value analysis
+- Chart generation (histograms, bar charts, heatmaps)
+- SQL querying using DuckDB
+- Machine learning model training and predictions
+- Full HTML and PDF report generation
+- Kaggle dataset downloading (competition + dataset ID)
+- ZIP dataset extraction and one-click loading
+- Both CLI mode and Streamlit web UI
+
+---
+
+## Key Features
+
+- AI-based free-form querying using Google Gemini with function calling
+- Automatic visual insights
+- ML models: Logistic Regression, Random Forest
+- SQL data querying
+- PDF/HTML report generator
+- Multi-dataset memory and switching
+- Modular architecture (`modules/`)
+- Fully deployable Streamlit interface
+
+---
 
 ## Setup Instructions
 
 ### 1. Prerequisites
 
-- Python 3.8 or higher
+- Python 3 or higher
 - Kaggle API credentials
 - Google Gemini API key
 
 ### 2. Install Dependencies
 
 ```bash
-# Activate your virtual environment (if using one)
-# Windows:
-venv\Scripts\activate
-# Linux/Mac:
-source venv/bin/activate
-
-# Install required packages
 pip install -r requirements.txt
 ```
-
-**Note**: For PDF generation, you may also need to install `wkhtmltopdf`:
-- **Windows**: Download from [wkhtmltopdf.org](https://wkhtmltopdf.org/downloads.html)
-- **Linux**: `sudo apt-get install wkhtmltopdf`
-- **Mac**: `brew install wkhtmltopdf`
 
 ### 3. Configure API Keys
 
@@ -99,18 +97,30 @@ The app will open in your browser at `http://localhost:8501`
 python app.py
 ```
 
-### Loading a ZIP Dataset (e.g., `titanic.zip`)
+---
 
-1. Place the ZIP file inside the `data/` folder.
-2. Open the Streamlit app (`streamlit run streamlit_app.py`).
-3. Go to `📁 Load Dataset` → `📦 Zipped Datasets Detected`.
-4. Select the ZIP file, choose a dataset name, and click **Extract & Load ZIP Dataset**.
+## Using the Streamlit App
 
-When you run `app.py`, you'll be prompted to:
-1. Download Titanic competition dataset
-2. Download a Kaggle dataset by ID (e.g., `uciml/iris`)
-3. Load a dataset from a local file
-4. Skip and load a dataset later via the agent
+The web interface supports:
+
+1. Loading datasets from:
+   - Kaggle competitions
+   - Kaggle dataset IDs
+   - Local CSV files
+   - ZIP archives (auto-detected and extracted)
+
+2. AI analysis including:
+   - Data summaries
+   - Column descriptions
+   - Correlation heatmaps
+   - Histogram and bar charts
+   - SQL querying
+   - Machine learning model training
+   - Report generation (HTML/PDF)
+
+3. Multi-dataset management with names and switching.
+
+---
 
 ### Example Queries
 
@@ -120,54 +130,19 @@ Once the agent is running, you can ask questions like:
 🤖 You: What columns are in the dataset?
 🤖 You: Show me statistics for the Age column
 🤖 You: How many missing values are there?
-🤖 You: Create a histogram for the Fare column
-🤖 You: Generate a correlation heatmap
 🤖 You: Train a random_forest model
 🤖 You: Predict survival for Pclass=3, Sex=male, Age=30, Fare=7.25
-🤖 You: Run SQL query: SELECT * FROM dataset LIMIT 10
-🤖 You: Generate a report with title "Titanic Analysis"
-🤖 You: Download the iris dataset from Kaggle
-🤖 You: Load the dataset from ./data/iris.csv with name "iris"
 ```
 
-## Code Block Mapping
+---
 
-This project is organized based on your Google Colab notebook blocks:
+## 🏷️ Badges
 
-- **Block 1** → `modules/config.py`: Environment setup and API key configuration
-- **Block 2** → `modules/kaggle_utils.py`: Kaggle API helper functions
-- **Block 3** → `modules/dataset_loader.py`: Competition dataset download
-- **Block 4** → `modules/dataset_loader.py`: Dataset loading and preview
-- **Block 4.5** → `modules/config.py`: Alternative API key loading
-- **Block 5** → `modules/agent.py`: Base tools (list_columns, describe_column, missing_values)
-- **Block 6** → `modules/agent.py`: Chart tools (histogram, bar chart, correlation)
-- **Block 7** → `modules/agent.py`: ML tools (train_model, predict, list_models)
-- **Block 8** → `modules/agent.py`: SQL query tool
-- **Block 9** → `modules/agent.py`: Report generation (HTML/PDF)
-- **Block 10** → `modules/agent.py`: Multi-dataset support
-- **Block 10.5** → `modules/dataset_loader.py`: Simple Kaggle dataset download
+![Python](https://img.shields.io/badge/Python-3.10-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-Cloud-red)
+![Kaggle](https://img.shields.io/badge/Kaggle-API-blue)
 
-## Key Differences from Colab
-
-1. **Environment Variables**: Uses `.env` file instead of Colab's `userdata.get()`
-2. **Display**: Uses `print()` instead of Colab's `display()` for images
-3. **File Paths**: Uses local file system paths instead of Colab's `/content/`
-4. **Kaggle Credentials**: Stored in `~/.kaggle/kaggle.json` instead of Colab secrets
-
-## Troubleshooting
-
-### Kaggle API Issues
-- Ensure your Kaggle credentials are correct in `.env`
-- Check that `kaggle.json` exists in `~/.kaggle/` with correct permissions (600)
-- For some datasets, you may need to accept terms on Kaggle website first
-
-### PDF Generation Issues
-- Ensure `wkhtmltopdf` is installed and in your PATH
-- On Windows, you may need to specify the path to `wkhtmltopdf` in your code
-
-### API Key Issues
-- Verify your Google API key is valid and has access to Gemini models
-- Check that `.env` file is in the project root directory
+---
 
 ## Development
 
@@ -177,6 +152,8 @@ To extend the agent with new tools:
 2. Create a function declaration dictionary
 3. Add it to the appropriate declarations list
 4. Update `rebuild_tool_schema()` to include your new tool
+
+---
 
 ## License
 
