@@ -32,6 +32,29 @@ This system acts as an AI assistant for dataset understanding. It supports:
 
 ---
 
+## Architecture and Core Concepts
+
+The Kaggle Time-Saver Agent operates as a single, powerful **Gemini LLM Orchestrator** managing a diverse toolkit of specialized Python functions. This structure is central to its ability to handle complex, multi-step data science workflows entirely through natural language. 
+
+### Core Concepts Demonstrated
+
+* **1. LLM-Powered Tool Orchestration (Key Concept: Tool Use)**
+    * The Gemini model serves as the central brain, interpreting user intent (e.g., "Train a model") and dynamically selecting the correct tool function (`train_model` or `generate_chart`) from the backend library.
+    * This is crucial for translating free-form requests into structured, executable data science commands.
+
+* **2. Modular Tool Design (Key Concept: Custom Function Schemas)**
+    * All external capabilities (SQL querying, model training, charting) are exposed to the LLM as Python functions with **Pydantic Schemas**.
+    * This ensures the LLM generates reliable, structured arguments (e.g., specifying the correct `feature_columns` and `target_column`) needed by the data analysis backend.
+
+* **3. Multi-Turn Session Memory (Key Concept: Conversation History)**
+    * The agent maintains the full **conversation history** (user prompts, tool calls, and tool outputs) and passes it in every subsequent API request.
+    * This allows the agent to recall context, enabling complex chains of thought like: "Train a Random Forest model on the Iris dataset," followed by, "Now, show me the **predictions** from that model," without losing track of which dataset or model to reference.
+
+* **4. External System Integration (Key Concept: CLI Automation)**
+    * We solved the critical challenge of interacting with external, non-API systems by creating specialized tools that execute the **Kaggle CLI** via `subprocess`. This expands the agent's reach beyond standard APIs to include file downloads and environment setup.
+
+---
+
 ## Key Features
 
 - AI-based free-form querying using Google Gemini with function calling
